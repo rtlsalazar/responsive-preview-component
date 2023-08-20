@@ -1,0 +1,183 @@
+@charset "UTF-8";
+@import "./_reset.scss";
+
+/* ---------------------------------------------------------------------------------------------- */
+/*  Variables */
+/* ---------------------------------------------------------------------------------------------- */
+$Dark-cyan: hsl(158, 36%, 37%);
+$Cream: hsl(30, 38%, 92%);
+$White: hsl(0, 0%, 100%);
+
+@font-face{
+  font-family: "Montserrat";
+  src: url(./fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url(./fonts/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf);
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*  Document global Styles */
+/* ---------------------------------------------------------------------------------------------- */
+html {
+  font-family: "Montserrat";
+  background: $Cream;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*  Sections Styles */
+/* ---------------------------------------------------------------------------------------------- */
+main{
+  height: 100vh; 
+  display: grid;
+  place-items: center;
+}
+
+article.produt-preview{
+  display: grid;
+
+  /* Box Style */
+  margin: 1rem;
+  width: min(40rem, 95%);
+  border-radius: 0.85rem;
+  background-color: hsl(0, 0%, 100%);
+
+  /* Smartphones (portrait) */
+  @media only screen and (max-width: 480px) { // 480px
+    /* Layout Model */
+    grid-template-rows:
+      0.7fr
+      1.3fr;
+
+    grid-template-areas:
+      "preview"
+      "description";
+  }
+
+  // Smartphones (landscape) / Desktop
+  @media only screen and (min-width: 480px) { // 480px
+    /* Layout Model */
+    grid-template-columns:
+      1fr 1fr;
+
+    grid-template-areas:
+      "preview description";
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*  preview Section */
+/* ---------------------------------------------------------------------------------------------- */
+section.preview{
+  /* Positioning */
+  grid-area: preview;
+
+  > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    /* Smartphones (portrait) */
+    @media only screen and (max-width: 480px) { // 480px
+      content:url("/img/image-product-mobile.jpg");
+      border-top-left-radius: 0.85rem;
+      border-top-right-radius: 0.85rem;
+    }
+
+    // Smartphones (landscape) / Desktop
+    @media only screen and (min-width: 480px) { // 480px
+      content:url("/img/image-product-desktop.jpg");
+      border-top-left-radius: 0.85rem;
+      border-bottom-left-radius: 0.85rem;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/*  description Section */
+/* ---------------------------------------------------------------------------------------------- */
+section.description {
+  /* Positioning */
+  grid-area: description;
+
+  /* Layout Model */
+  display: grid;
+  row-gap: 1rem;
+
+  /* Box Style */
+  padding: 2rem;
+}
+
+section.description > span.title{
+  /* Text Style */
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: darken($color: #ffff, $amount: 45);
+}
+
+section.description > h1.name{
+  /* Box Style */
+  width: 85%;
+
+  /* Text Style */
+  font-weight: 700;
+  font-size: 2.2rem;
+  font-family: "Fraunces";
+}
+
+section.description > p.description{
+  /* Text Style */
+  font-weight: 500;
+  color: darken($color: #ffff, $amount: 45);
+  line-height: 1.4;
+}
+
+section.description > div.price{
+  /* Layout Model */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  /* Children */
+  > .priceNow{
+    /* Text Style */
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: "Fraunces";
+    color: $Dark-cyan;
+  }
+
+  > .priceBefore{
+    /* Text Style */
+    font-weight: 500;
+    color: darken($color: #ffff, $amount: 45);
+    text-decoration: line-through;
+  }
+}
+
+section.description > button{
+  /* Layout Model */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  /* Box Style */
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  background-color: $Dark-cyan;
+  color: white;
+  cursor: pointer;
+
+  /* behaviours*/
+  &:hover{
+    background-color: darken($Dark-cyan, 10%);
+  }
+  &:active{
+    background-color: darken($Dark-cyan, 20%);
+  }
+}
