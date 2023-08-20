@@ -11,7 +11,7 @@ This is a solution to the Product preview card component challenge on Frontend M
 - Vite
 
 ### Screenshot
-#### Deskto
+#### Desktop
 ![Desktop Preview](./Screenshot_desktop.png)
 
 #### Mobile
